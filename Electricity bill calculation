@@ -1,0 +1,59 @@
+/*
+Name:Benard Karomo
+Reg no: CT100/G/30708/26
+Description:Electricity bill calculator using user-defined functions. Finds the
+energy charge (first 50 units @ KSh 10, next 100 @ KSh 15, above 150 @ KSh 20),
+a 10% tax on that charge, and the total bill.
+*/
+
+#include <stdio.h>
+
+/* Function prototypes */
+float calculateEnergyCharge(int units);
+float calculateTax(float energyCharge);
+float calculateTotalBill(float energyCharge, float tax);
+
+int main(){
+    int units;
+    float energyCharge, tax, totalBill;
+
+    printf("Enter the number of units consumed: ");
+    scanf("%d", &units);
+
+    /* Function calls */
+    energyCharge = calculateEnergyCharge(units);
+    tax          = calculateTax(energyCharge);
+    totalBill    = calculateTotalBill(energyCharge, tax);
+
+    printf("\n----- ELECTRICITY BILL -----\n");
+    printf("Units consumed : %d\n", units);
+    printf("Energy charge  : KSh %.2f\n", energyCharge);
+    printf("Tax (10%%)      : KSh %.2f\n", tax);
+    printf("Total bill     : KSh %.2f\n", totalBill);
+
+    return 0;
+}
+
+/* First 50 units @ 10, next 100 units @ 15, above 150 units @ 20 */
+float calculateEnergyCharge(int units){
+    float charge;
+
+    if(units <= 50)
+        charge = units * 10;
+    else if(units <= 150)
+        charge = (50 * 10) + (units - 50) * 15;
+    else
+        charge = (50 * 10) + (100 * 15) + (units - 150) * 20;
+
+    return charge;
+}
+
+/* 10% tax on the energy charge */
+float calculateTax(float energyCharge){
+    return energyCharge * 0.10;
+}
+
+/* Total bill = energy charge + tax */
+float calculateTotalBill(float energyCharge, float tax){
+    return energyCharge + tax;
+}
