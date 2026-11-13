@@ -1,0 +1,34 @@
+/*
+Name:Benard Karomo
+Reg no: CT100/G/30708/26
+Description:Electricity bill program. A function calculates the total bill from the
+number of units consumed and the cost per unit, and main() displays the result.
+*/
+
+#include <stdio.h>
+
+/* Function prototype */
+float calculateBill(int units, float costPerUnit);
+
+int main(){
+    int units;
+    float costPerUnit, bill;
+
+    printf("Enter the number of electricity units consumed: ");
+    scanf("%d", &units);
+
+    printf("Enter the cost per unit (KSh): ");
+    scanf("%f", &costPerUnit);
+
+    /* Function call */
+    bill = calculateBill(units, costPerUnit);
+
+    printf("Total electricity bill: KSh %.2f\n", bill);
+
+    return 0;
+}
+
+/* Function definition */
+float calculateBill(int units, float costPerUnit){
+    return units * costPerUnit;
+}
