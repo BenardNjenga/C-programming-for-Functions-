@@ -1,0 +1,30 @@
+/*
+Name:Benard Karomo
+Reg no: CT100/G/30708/26
+Description:Grocery shop program. A function calculates the total cost from the
+price of one item and the quantity purchased, and main() displays the amount
+to be paid.
+*/
+
+#include <stdio.h>
+
+/* Function prototype */
+float calculateTotal(float price, int quantity);
+
+int main(){
+    float price, total;
+    int quantity;
+
+    printf("Enter the price of one item (KSh): ");
+    scanf("%f", &price);
+
+    printf("Enter the quantity purchased: ");
+    scanf("%d", &quantity);
+
+    /* Function call */
+    total = calculateTotal(price, quantity);
+
+    printf("The total amount to be paid is KSh %.2f\n", total);
+
+    return 0;
+}
