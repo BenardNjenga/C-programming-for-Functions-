@@ -1,0 +1,62 @@
+/*
+Name:Benard Karomo
+Reg no: CT100/G/30708/26
+Description:Sales calculation system for a supermarket. Uses functions to
+calculate the subtotal of five products, the discount (10% for KSh 10,000
+or more, 5% for KSh 5,000 - 9,999, none below) and the final amount payable.
+*/
+  
+#include <stdio.h>
+
+/* Function prototypes */
+float calculateSubtotal(float p1, float p2, float p3, float p4, float p5);
+float calculateDiscount(float subtotal);
+float calculateFinalAmount(float subtotal, float discount);
+
+int main(){
+    float p1, p2, p3, p4, p5;
+    float subtotal, discount, finalAmount;
+
+    printf("Enter the price of product 1 (KSh): ");
+    scanf("%f", &p1);
+    printf("Enter the price of product 2 (KSh): ");
+    scanf("%f", &p2);
+    printf("Enter the price of product 3 (KSh): ");
+    scanf("%f", &p3);
+    printf("Enter the price of product 4 (KSh): ");
+    scanf("%f", &p4);
+    printf("Enter the price of product 5 (KSh): ");
+    scanf("%f", &p5);
+
+    /* Function calls */
+    subtotal    = calculateSubtotal(p1, p2, p3, p4, p5);
+    discount    = calculateDiscount(subtotal);
+    finalAmount = calculateFinalAmount(subtotal, discount);
+
+    printf("\n----- SALES SUMMARY -----\n");
+    printf("Subtotal             : KSh %.2f\n", subtotal);
+    printf("Discount amount      : KSh %.2f\n", discount);
+    printf("Final amount payable : KSh %.2f\n", finalAmount);
+
+    return 0;
+}
+
+/* Adds up the prices of the five products */
+float calculateSubtotal(float p1, float p2, float p3, float p4, float p5){
+    return p1 + p2 + p3 + p4 + p5;
+}
+
+/* 10% off for 10,000 or more, 5% off for 5,000 - 9,999, otherwise none */
+float calculateDiscount(float subtotal){
+    if(subtotal >= 10000)
+        return subtotal * 0.10;
+    else if(subtotal >= 5000)
+        return subtotal * 0.05;
+    else
+        return 0;
+}
+
+/* Final amount = subtotal minus discount */
+float calculateFinalAmount(float subtotal, float discount){
+    return subtotal - discount;
+}
