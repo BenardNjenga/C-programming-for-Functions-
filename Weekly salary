@@ -1,0 +1,33 @@
+/*
+Name:Benard Karomo
+Reg no: CT100/G/30708/26
+Description:Weekly salary program. A function calculates the salary from the
+hours worked and the hourly wage, and main() displays the weekly salary.
+*/
+
+#include <stdio.h>
+
+/* Function prototype */
+float calculateSalary(float hoursWorked, float hourlyWage);
+
+int main(){
+    float hoursWorked, hourlyWage, salary;
+
+    printf("Enter the hours worked: ");
+    scanf("%f", &hoursWorked);
+
+    printf("Enter the hourly wage (KSh): ");
+    scanf("%f", &hourlyWage);
+
+    /* Function call */
+    salary = calculateSalary(hoursWorked, hourlyWage);
+
+    printf("Weekly salary: KSh %.2f\n", salary);
+
+    return 0;
+}
+
+/* Function definition */
+float calculateSalary(float hoursWorked, float hourlyWage){
+    return hoursWorked * hourlyWage;
+}
